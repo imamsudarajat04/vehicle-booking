@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name'
+    ];
+
+    public function offices()
+    {
+        return $this->hasMany(Office::class);
+    }
 }

@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function office()
+    {
+        return $this->hasOne(Office::class);
+    }
+
+    public function approvals()
+    {
+        return $this->hasMany(Approval::class);
+    }
 }
