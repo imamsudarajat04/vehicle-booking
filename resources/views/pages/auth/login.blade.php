@@ -29,20 +29,27 @@
                                     @csrf
 
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                        <label for="Email" class="form-label">Email</label>
+                                        <input type="email" class="form-control {!! $errors->has('email') ? 'is-invalid' : '' !!}" name="email" id="email" placeholder="Enter email">
+
+                                        @error('email')
+                                            <div class="mt-2 alert alert-danger">{!! $message !!}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="password-input">Password</label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input type="password" class="form-control pe-5" placeholder="Enter password" id="password-input">
+                                            <input type="password" class="form-control pe-5 {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter password" id="password-input">
                                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                            @error('password')
+                                                <div class="mt-2 alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
+                                        <input class="form-check-input" type="checkbox" value="" name="remember" id="auth-remember-check">
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                     </div>
 

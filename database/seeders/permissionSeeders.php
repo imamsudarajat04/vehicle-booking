@@ -43,11 +43,11 @@ class permissionSeeders extends Seeder
         Permission::create(['name' => 'edit_vehicles', 'guard_name' => 'web']);
         Permission::create(['name' => 'delete_vehicles', 'guard_name' => 'web']);
 
-        // Vehicle Type Management
-        Permission::create(['name' => 'view_vehicle_types', 'guard_name' => 'web']);
-        Permission::create(['name' => 'create_vehicle_types', 'guard_name' => 'web']);
-        Permission::create(['name' => 'edit_vehicle_types', 'guard_name' => 'web']);
-        Permission::create(['name' => 'delete_vehicle_types', 'guard_name' => 'web']);
+        // Employee Management
+        Permission::create(['name' => 'view_employees', 'guard_name' => 'web']);
+        Permission::create(['name' => 'create_employees', 'guard_name' => 'web']);
+        Permission::create(['name' => 'edit_employees', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete_employees', 'guard_name' => 'web']);
 
         // Booking Management
         Permission::create(['name' => 'view_bookings', 'guard_name' => 'web']);
@@ -98,10 +98,10 @@ class permissionSeeders extends Seeder
         $userRole->givePermissionTo('create_vehicles');
         $userRole->givePermissionTo('edit_vehicles');
         $userRole->givePermissionTo('delete_vehicles');
-        $userRole->givePermissionTo('view_vehicle_types');
-        $userRole->givePermissionTo('create_vehicle_types');
-        $userRole->givePermissionTo('edit_vehicle_types');
-        $userRole->givePermissionTo('delete_vehicle_types');
+        $userRole->givePermissionTo('view_employees');
+        $userRole->givePermissionTo('create_employees');
+        $userRole->givePermissionTo('edit_employees');
+        $userRole->givePermissionTo('delete_employees');
         $userRole->givePermissionTo('view_bookings');
         $userRole->givePermissionTo('create_bookings');
         $userRole->givePermissionTo('edit_bookings');
