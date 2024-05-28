@@ -25,9 +25,9 @@
                                 <p class="text-muted">Sign in to continue to Dashboard.</p>
                             </div>
                             <div class="p-2 mt-4">
-                                <form method="POST" action="#">
+                                <form method="POST" action="{!! route('todoLogin') !!}">
                                     @csrf
-                                    
+
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Username</label>
                                         <input type="text" class="form-control" id="username" placeholder="Enter username">
