@@ -14,5 +14,5 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', [AuthController::class, 'index']);
-Route::post('/login', [AuthController::class, 'login'])->name('todoLogin');
+Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'todoLogin'])->name('todoLogin');

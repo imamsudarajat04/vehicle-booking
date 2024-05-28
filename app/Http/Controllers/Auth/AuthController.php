@@ -11,4 +11,9 @@ class AuthController extends Controller
     {
         return view('pages.auth.login');
     }
+
+    public function todoLogin()
+    {
+        
+    }
 }
