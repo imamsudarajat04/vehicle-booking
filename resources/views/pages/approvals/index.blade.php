@@ -1,14 +1,12 @@
 @extends('layouts.dashboard.DashboardLayout')
 
-@section('title', 'Permission')
-@section('pageTitle', 'Permission')
-@section('datamaster', 'active')
-@section('toggle', '')
-@section('permission', 'active')
+@section('title', 'Approval')
+@section('pageTitle', 'Approval')
+@section('approval', 'active')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Permission</li>
+    <li class="breadcrumb-item active">Approval</li>
 @endsection
 
 @push('styles')
@@ -23,24 +21,19 @@
 
       <div class="card-header">
         <div class="d-flex align-items-center">
-          <h5 class="card-title mb-0 flex-grow-1">List Permissions</h5>
-
-          @can('create_permissions')  
-            <div class="flex-shrink-0">
-              <a class="btn btn-success add-btn" href="{!! route('permission.create') !!}"> <i class="ri-add-line align-bottom me-1"></i> Create new permission</a>
-            </div>
-          @endcan
+          <h5 class="card-title mb-0 flex-grow-1">List Approval</h5>
         </div>
       </div>
 
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%" id="tablePermission">
+          <table class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%" id="tableApproval">
             <thead>
               <tr>
                 <th style="width: 70px">No</th>
-                <th>Permissions</th>
-                <th>Guard</th>
+                <th>Booking ID</th>
+                <th>Approval Name</th>
+                <th>Status</th>
                 <th style="width: 100px">Action</th>
               </tr>
             </thead>
@@ -58,48 +51,50 @@
 @endsection
 
 @push('scripts')
-  <script>
-    $('#tablePermission').DataTable({
-          processing: true,
-          serverSide: true,
-          ordering: true,
-          ajax: '{!! url()->current() !!}',
-          order: [
-          [1, 'asc']
-          ],
-          columns: [
-          {
-              data: 'DT_RowIndex',
-              name: 'DT_RowIndex',
-              width: '1%',
-              orderable: false,
-              searchable: false,
-          },
-          {
-              data: 'name',
-              name: 'name',
-          },
-          {
-              data: 'guard_name',
-              name: 'guard_name',
-              orderable: false,
-              searchable: false,
-          },
-          {
-              data: 'action',
-              name: 'action',
-              orderable: false,
-              searchable: false,
-              width: '1%',
-          }
-          ],
-          sDom: '<"secondBar d-flex flex-w1rap justify-content-between mb-2";f>rt<"bottom"p>',
-          "fnCreatedRow": function(nRow, data) {
-          $(nRow).attr('id', 'permission' + data.id);
-          },
-      });
+<script>
+    $('#tableApproval').DataTable({
+        processing: true,
+        serverSide: true,
+        ordering: true,
+        ajax: '{!! url()->current() !!}',
+        order: [
+            [1, 'asc']
+        ],
+        columns: [
+        {
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            width: '1%',
+            orderable: false,
+            searchable: false,
+        },
+        {
+            data: 'booking_id',
+            name: 'booking_id',
+        },
+        {
+            data: 'user_id',
+            name: 'user_id',
+        },
+        {
+            data: 'status',
+            name: 'status',
+        },
+        {
+            data: 'action',
+            name: 'action',
+            orderable: false,
+            searchable: false,
+            width: '1%',
+        }
+        ],
+        sDom: '<"secondBar d-flex flex-w1rap justify-content-between mb-2";f>rt<"bottom"p>',
+        "fnCreatedRow": function(nRow, data) {
+            $(nRow).attr('id', 'approval' + data.id);
+        },
+    });
 
-      $(document).on('click', '#btn-hapus', function () {
+    $(document).on('click', '#btn-hapus', function () {
         let id = $(this).data('id');
         let token = $("meta[name='csrf-token']").attr("content");
 
@@ -113,7 +108,7 @@
         }).then((result) => {
           if (result.isConfirmed) {
             $.ajax({
-              url: `/data-master/permission/${id}`,
+              url: `/approval/${id}`,
               type: 'DELETE',
               cache: false,
               data: {
@@ -129,9 +124,9 @@
                     timer: 3000
                   });
 
-                  $('#permission' + id).remove();
-                  $('#tablePermission').DataTable().ajax.reload();
-                  $('#tablePermission').DataTable().draw();
+                  $('#approval' + id).remove();
+                  $('#tableApproval').DataTable().ajax.reload();
+                  $('#tableApproval').DataTable().draw();
                 }else{
                   Swal.fire({
                     type: 'info',

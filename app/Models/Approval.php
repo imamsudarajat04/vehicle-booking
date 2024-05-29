@@ -13,7 +13,6 @@ class Approval extends Model
         'booking_id',
         'user_id',
         'status',
-        'remarks',
     ];
 
     public function booking()

@@ -26,7 +26,6 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->enum('status', ['approved', 'rejected']);
-            $table->longText('remarks')->nullable();
             $table->timestamps();
         });
     }

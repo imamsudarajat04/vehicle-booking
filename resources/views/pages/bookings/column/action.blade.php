@@ -19,7 +19,7 @@
             </a>
           </li>
         @endcan
-        @can('approve_bookings')
+        @can('reject_bookings')
           <li>
             <a class="dropdown-item reject-item-btn" href="{!! route('booking.reject', $item->id) !!}"
               ><i

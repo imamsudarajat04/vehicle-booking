@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\Management\MineController;
 use App\Http\Controllers\Dashboard\Booking\BookingController;
 use App\Http\Controllers\Dashboard\Management\RegionController;
 use App\Http\Controllers\Dashboard\Management\OfficeController;
+use App\Http\Controllers\Dashboard\Approval\ApprovalController;
 use App\Http\Controllers\Dashboard\Management\VehicleController;
 use App\Http\Controllers\Dashboard\Management\EmployeeController;
 use App\Http\Controllers\Dashboard\DataMaster\PermissionController;
@@ -67,4 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('booking', BookingController::class);
     Route::get('booking/{booking}/approve', [BookingController::class, 'approve'])->name('booking.approve');
     Route::get('booking/{booking}/reject', [BookingController::class, 'reject'])->name('booking.reject');
+
+    //Approval
+    Route::resource('approval', ApprovalController::class)->except(['show', 'create', 'store', 'edit', 'update']);
 });

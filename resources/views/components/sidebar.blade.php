@@ -94,32 +94,6 @@
                 </div>
             </li>
 
-            {{-- Vehicle Monitoring --}}
-            <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarVehicleMonitoring" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarVehicleMonitoring">
-                    <i class="ri-gas-station-line"></i> <span data-key="t-vehicle-monitoring">Vehicle Monitoring</span>
-                </a>
-                <div class="collapse menu-dropdown" id="sidebarVehicleMonitoring">
-                    <ul class="nav nav-sm flex-column">
-                        @can('view_fuel_consumption')
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-fuel"> Fuel Consumption </a>
-                            </li>
-                        @endcan
-                        @can('view_service_schedules')
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-service"> Service Schedule </a>
-                            </li>
-                        @endcan
-                        @can('view_usage_history')
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-usage"> Vehicle Usage History </a>
-                            </li>
-                        @endcan
-                    </ul>
-                </div>
-            </li>
-
             {{-- Booking --}}
             @can('view_employees')
                 <li class="nav-item">
@@ -132,7 +106,7 @@
             {{-- Approval --}}
             @can('view_approvals')
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{!! route('dashboard') !!}">
+                    <a class="nav-link menu-link @yield('approval')" href="{!! route('approval.index') !!}">
                         <i class="ri-user-follow-line"></i> <span data-key="t-approval">Approval</span>
                     </a>
                 </li>

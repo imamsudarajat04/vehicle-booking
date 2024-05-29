@@ -69,6 +69,7 @@ class permissionSeeders extends Seeder
         Permission::create(['name' => 'edit_bookings', 'guard_name' => 'web']);
         Permission::create(['name' => 'delete_bookings', 'guard_name' => 'web']);
         Permission::create(['name' => 'approve_bookings', 'guard_name' => 'web']);
+        Permission::create(['name' => 'reject_bookings', 'guard_name' => 'web']);
 
         // Approval Management
         Permission::create(['name' => 'view_approvals', 'guard_name' => 'web']);
@@ -132,6 +133,7 @@ class permissionSeeders extends Seeder
             'edit_bookings',
             'delete_bookings',
             'approve_bookings',
+            'reject_bookings',
             'view_approvals',
             'create_approvals',
             'edit_approvals',
@@ -197,6 +199,7 @@ class permissionSeeders extends Seeder
             'edit_bookings',
             'delete_bookings',
             'approve_bookings',
+            'reject_bookings',
             'view_approvals',
             'create_approvals',
             'edit_approvals',
