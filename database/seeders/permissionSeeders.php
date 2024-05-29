@@ -20,7 +20,22 @@ class permissionSeeders extends Seeder
         //reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Region and Office Management
+        //Data Master
+        Permission::create(['name' => 'view_permissions', 'guard_name' => 'web']);
+        Permission::create(['name' => 'create_permissions', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete_permissions', 'guard_name' => 'web']);
+
+        Permission::create(['name' => 'view_roles', 'guard_name' => 'web']);
+        Permission::create(['name' => 'create_roles', 'guard_name' => 'web']);
+        Permission::create(['name' => 'edit_roles', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete_roles', 'guard_name' => 'web']);
+
+        Permission::create(['name' => 'view_users', 'guard_name' => 'web']);
+        Permission::create(['name' => 'create_users', 'guard_name' => 'web']);
+        Permission::create(['name' => 'edit_users', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete_users', 'guard_name' => 'web']);
+
+        // Management
         Permission::create(['name' => 'view_regions', 'guard_name' => 'web']);
         Permission::create(['name' => 'create_regions', 'guard_name' => 'web']);
         Permission::create(['name' => 'edit_regions', 'guard_name' => 'web']);
@@ -82,47 +97,60 @@ class permissionSeeders extends Seeder
 
         $userRole = Role::first();
 
-        $userRole->givePermissionTo('view_regions');
-        $userRole->givePermissionTo('create_regions');
-        $userRole->givePermissionTo('edit_regions');
-        $userRole->givePermissionTo('delete_regions');
-        $userRole->givePermissionTo('view_offices');
-        $userRole->givePermissionTo('create_offices');
-        $userRole->givePermissionTo('edit_offices');
-        $userRole->givePermissionTo('delete_offices');
-        $userRole->givePermissionTo('view_mines');
-        $userRole->givePermissionTo('create_mines');
-        $userRole->givePermissionTo('edit_mines');
-        $userRole->givePermissionTo('delete_mines');
-        $userRole->givePermissionTo('view_vehicles');
-        $userRole->givePermissionTo('create_vehicles');
-        $userRole->givePermissionTo('edit_vehicles');
-        $userRole->givePermissionTo('delete_vehicles');
-        $userRole->givePermissionTo('view_employees');
-        $userRole->givePermissionTo('create_employees');
-        $userRole->givePermissionTo('edit_employees');
-        $userRole->givePermissionTo('delete_employees');
-        $userRole->givePermissionTo('view_bookings');
-        $userRole->givePermissionTo('create_bookings');
-        $userRole->givePermissionTo('edit_bookings');
-        $userRole->givePermissionTo('delete_bookings');
-        $userRole->givePermissionTo('approve_bookings');
-        $userRole->givePermissionTo('view_approvals');
-        $userRole->givePermissionTo('create_approvals');
-        $userRole->givePermissionTo('edit_approvals');
-        $userRole->givePermissionTo('delete_approvals');
-        $userRole->givePermissionTo('view_fuel_consumption');
-        $userRole->givePermissionTo('create_fuel_consumption');
-        $userRole->givePermissionTo('edit_fuel_consumption');
-        $userRole->givePermissionTo('delete_fuel_consumption');
-        $userRole->givePermissionTo('view_service_schedules');
-        $userRole->givePermissionTo('create_service_schedules');
-        $userRole->givePermissionTo('edit_service_schedules');
-        $userRole->givePermissionTo('delete_service_schedules');
-        $userRole->givePermissionTo('view_usage_history');
-        $userRole->givePermissionTo('create_usage_history');
-        $userRole->givePermissionTo('edit_usage_history');
-        $userRole->givePermissionTo('delete_usage_history');
+        $userRole->givePermissionTo([
+            'view_permissions', 
+            'create_permissions', 
+            'delete_permissions',
+            'view_roles',
+            'create_roles',
+            'edit_roles',
+            'delete_roles',
+            'view_users',
+            'create_users',
+            'edit_users',
+            'delete_users',
+            'view_regions',
+            'create_regions',
+            'edit_regions',
+            'delete_regions',
+            'view_offices',
+            'create_offices',
+            'edit_offices',
+            'delete_offices',
+            'view_mines',
+            'create_mines',
+            'edit_mines',
+            'delete_mines',
+            'view_vehicles',
+            'create_vehicles',
+            'edit_vehicles',
+            'delete_vehicles',
+            'view_employees',
+            'create_employees',
+            'edit_employees',
+            'delete_employees',
+            'view_bookings',
+            'create_bookings',
+            'edit_bookings',
+            'delete_bookings',
+            'approve_bookings',
+            'view_approvals',
+            'create_approvals',
+            'edit_approvals',
+            'delete_approvals',
+            'view_fuel_consumption',
+            'create_fuel_consumption',
+            'edit_fuel_consumption',
+            'delete_fuel_consumption',
+            'view_service_schedules',
+            'create_service_schedules',
+            'edit_service_schedules',
+            'delete_service_schedules',
+            'view_usage_history',
+            'create_usage_history',
+            'edit_usage_history',
+            'delete_usage_history',
+        ]);
 
         $user = User::factory()->create([
             'name'       => 'Admin',

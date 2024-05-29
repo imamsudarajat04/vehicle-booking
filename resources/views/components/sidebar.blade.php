@@ -3,19 +3,19 @@
     <!-- Dark Logo-->
     <a href="{!! route('dashboard') !!}" class="logo logo-dark">
         <span class="logo-sm">
-            <img src="assets/images/logo-sm.png" alt="" height="22">
+            <img src="{!! asset('assets/images/logo-sm.png') !!}" alt="Image" height="22">
         </span>
         <span class="logo-lg">
-            <img src="assets/images/logo-dark.png" alt="" height="17">
+            <img src="{!! asset('assets/images/logo-dark.png') !!}" alt="Image" height="17">
         </span>
     </a>
     <!-- Light Logo-->
     <a href="{!! route('dashboard') !!}" class="logo logo-light">
         <span class="logo-sm">
-            <img src="assets/images/logo-sm.png" alt="" height="22">
+            <img src="{!! asset('assets/images/logo-sm.png') !!}" alt="Image" height="22">
         </span>
         <span class="logo-lg">
-            <img src="assets/images/logo-light.png" alt="" height="17">
+            <img src="{!! asset('assets/images/logo-light.png') !!}" alt="Image" height="17">
         </span>
     </a>
     <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -40,10 +40,10 @@
 
             {{-- Data Master --}}
             <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarDataMaster" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDataMaster">
+                <a class="nav-link menu-link @yield('datamaster')" href="#sidebarDataMaster" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDataMaster">
                     <i class="ri-database-2-line"></i> <span data-key="t-data-master">Data Master</span>
                 </a>
-                <div class="collapse menu-dropdown" id="sidebarDataMaster">
+                <div class="@yield('toggle', 'collapse') menu-dropdown" id="sidebarDataMaster">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
                             <a href="#" class="nav-link" data-key="t-user"> User </a>
@@ -52,7 +52,7 @@
                             <a href="#" class="nav-link" data-key="t-Role"> Role </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-key="t-Permission"> Permission </a>
+                            <a href="{!! route('permission.index') !!}" class="nav-link @yield('permission')" data-key="t-Permission"> Permission </a>
                         </li>
                     </ul>
                 </div>
