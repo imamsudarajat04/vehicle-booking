@@ -38,7 +38,6 @@ class permissionSeeders extends Seeder
         // Management
         Permission::create(['name' => 'view_regions', 'guard_name' => 'web']);
         Permission::create(['name' => 'create_regions', 'guard_name' => 'web']);
-        Permission::create(['name' => 'edit_regions', 'guard_name' => 'web']);
         Permission::create(['name' => 'delete_regions', 'guard_name' => 'web']);
 
         Permission::create(['name' => 'view_offices', 'guard_name' => 'web']);

@@ -59,7 +59,7 @@
 @endsection
 @push('scripts')
     <script>
-         var tableUser = $('#tableUser').DataTable({
+        var tableUser = $('#tableUser').DataTable({
             processing: true,
             serverSide: true,
             ordering: true,

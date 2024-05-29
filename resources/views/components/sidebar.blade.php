@@ -60,34 +60,34 @@
 
             {{-- Management --}}
             <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarManagement" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarManagement">
+                <a class="nav-link menu-link @yield('management')" href="#sidebarManagement" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarManagement">
                     <i class="ri-home-gear-line"></i> <span data-key="t-management">Management</span>
                 </a>
-                <div class="collapse menu-dropdown" id="sidebarManagement">
+                <div class="@yield('toggleManagement', 'collapse') menu-dropdown" id="sidebarManagement">
                     <ul class="nav nav-sm flex-column">
                         @can('view_regions')
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-region"> Region </a>
+                                <a href="{!! route('region.index') !!}" class="nav-link @yield('region')" data-key="t-region"> Region </a>
                             </li>
                         @endcan
                         @can('view_offices')
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-offices"> Offices </a>
+                                <a href="#" class="nav-link @yield('office')" data-key="t-office"> Office </a>
                             </li>
                         @endcan
                         @can('view_mines')
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-mine"> Mine </a>
+                                <a href="#" class="nav-link @yield('mine')" data-key="t-mine"> Mine </a>
                             </li>
                         @endcan
                         @can('view_employees')
                             <li class="nav-item">
-                                <a class="nav-link" href="{!! route('dashboard') !!}" data-key="t-employee"> Employee </a>
+                                <a class="nav-link @yield('employee')" href="{!! route('dashboard') !!}" data-key="t-employee"> Employee </a>
                             </li>
                         @endcan
                         @can('view_vehicles')
                             <li class="nav-item">
-                                <a class="nav-link" href="{!! route('dashboard') !!}" data-key="t-vehicle"> Vehicle </a>
+                                <a class="nav-link @yield('vehicle')" href="{!! route('dashboard') !!}" data-key="t-vehicle"> Vehicle </a>
                             </li>
                         @endcan
                     </ul>
