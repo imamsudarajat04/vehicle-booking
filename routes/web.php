@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DataMaster\RoleController;
 use App\Http\Controllers\Dashboard\DataMaster\UserController;
 use App\Http\Controllers\Dashboard\Management\RegionController;
+use App\Http\Controllers\Dashboard\Management\OfficeController;
 use App\Http\Controllers\Dashboard\DataMaster\PermissionController;
 
 /*
@@ -44,5 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('management')->group(function () {
         //Region
         Route::resource('region', RegionController::class)->except(['show', 'edit', 'update']);
+
+        //Office
+        Route::resource('office', OfficeController::class)->except(['show']);
     });
 });

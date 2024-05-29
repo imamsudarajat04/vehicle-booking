@@ -72,7 +72,7 @@
                         @endcan
                         @can('view_offices')
                             <li class="nav-item">
-                                <a href="#" class="nav-link @yield('office')" data-key="t-office"> Office </a>
+                                <a href="{!! route('office.index') !!}" class="nav-link @yield('office')" data-key="t-office"> Office </a>
                             </li>
                         @endcan
                         @can('view_mines')
