@@ -19,6 +19,7 @@ class PermissionController extends Controller
         $this->middleware('permission:create_permissions', ['only' => ['create', 'store']]);
         $this->middleware('permission:delete_permissions', ['only' => ['destroy']]);
     }
+    
     /**
      * Display a listing of the resource.
      */

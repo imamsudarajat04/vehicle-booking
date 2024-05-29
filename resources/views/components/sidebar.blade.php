@@ -49,7 +49,7 @@
                             <a href="#" class="nav-link" data-key="t-user"> User </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-key="t-Role"> Role </a>
+                            <a href="{!! route('role.index') !!}" class="nav-link @yield('role')" data-key="t-Role"> Role </a>
                         </li>
                         <li class="nav-item">
                             <a href="{!! route('permission.index') !!}" class="nav-link @yield('permission')" data-key="t-Permission"> Permission </a>

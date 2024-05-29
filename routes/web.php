@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\DataMaster\RoleController;
 use App\Http\Controllers\Dashboard\DataMaster\PermissionController;
 
 /*
@@ -26,6 +27,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Data Master
     Route::prefix('data-master')->group(function () {
+        //Permission
         Route::resource('permission', PermissionController::class)->except(['show', 'edit', 'update']);
+
+        //Role
+        Route::resource('role', RoleController::class)->except(['show']);
     });
 });
