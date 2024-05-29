@@ -110,7 +110,6 @@ class permissionSeeders extends Seeder
             'delete_users',
             'view_regions',
             'create_regions',
-            'edit_regions',
             'delete_regions',
             'view_offices',
             'create_offices',
@@ -159,5 +158,70 @@ class permissionSeeders extends Seeder
         ]);
 
         $user->assignRole($userRole);
+
+        $userRoleApproval = Role::where('id', 2)->first();
+
+        $userRoleApproval->givePermissionTo([
+            'view_permissions',
+            'create_permissions',
+            'delete_permissions',
+            'view_roles',
+            'create_roles',
+            'edit_roles',
+            'delete_roles',
+            'view_users',
+            'create_users',
+            'edit_users',
+            'delete_users',
+            'view_regions',
+            'create_regions',
+            'delete_regions',
+            'view_offices',
+            'create_offices',
+            'edit_offices',
+            'delete_offices',
+            'view_mines',
+            'create_mines',
+            'edit_mines',
+            'delete_mines',
+            'view_vehicles',
+            'create_vehicles',
+            'edit_vehicles',
+            'delete_vehicles',
+            'view_employees',
+            'create_employees',
+            'edit_employees',
+            'delete_employees',
+            'view_bookings',
+            'create_bookings',
+            'edit_bookings',
+            'delete_bookings',
+            'approve_bookings',
+            'view_approvals',
+            'create_approvals',
+            'edit_approvals',
+            'delete_approvals',
+            'view_fuel_consumption',
+            'create_fuel_consumption',
+            'edit_fuel_consumption',
+            'delete_fuel_consumption',
+            'view_service_schedules',
+            'create_service_schedules',
+            'edit_service_schedules',
+            'delete_service_schedules',
+            'view_usage_history',
+            'create_usage_history',
+            'edit_usage_history',
+            'delete_usage_history',
+        ]);
+
+        $userApproval = User::factory()->create([
+            'name'       => 'John Doe',
+            'email'      => 'johndoe@gmail.com',
+            'password'   => Hash::make('password'),
+            'created_at' => now(),
+        ]);
+
+        $userApproval->assignRole($userRoleApproval);
     }
 }

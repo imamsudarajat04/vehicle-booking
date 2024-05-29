@@ -123,7 +123,7 @@
             {{-- Booking --}}
             @can('view_employees')
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{!! route('dashboard') !!}">
+                    <a class="nav-link menu-link @yield('booking')" href="{!! route('booking.index') !!}">
                         <i class="ri-calendar-check-line"></i> <span data-key="t-booking">Booking</span>
                     </a>
                 </li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DataMaster\RoleController;
 use App\Http\Controllers\Dashboard\DataMaster\UserController;
 use App\Http\Controllers\Dashboard\Management\MineController;
+use App\Http\Controllers\Dashboard\Booking\BookingController;
 use App\Http\Controllers\Dashboard\Management\RegionController;
 use App\Http\Controllers\Dashboard\Management\OfficeController;
 use App\Http\Controllers\Dashboard\Management\VehicleController;
@@ -61,4 +62,9 @@ Route::middleware(['auth'])->group(function () {
         //Vehicle
         Route::resource('vehicle', VehicleController::class)->except(['show']);
     });
+
+    //Booking
+    Route::resource('booking', BookingController::class);
+    Route::get('booking/{booking}/approve', [BookingController::class, 'approve'])->name('booking.approve');
+    Route::get('booking/{booking}/reject', [BookingController::class, 'reject'])->name('booking.reject');
 });

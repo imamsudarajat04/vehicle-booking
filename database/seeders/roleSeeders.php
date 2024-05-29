@@ -17,5 +17,10 @@ class roleSeeders extends Seeder
             'name' => 'super-admin', 
             'guard_name' => 'web'
         ]);
+
+        Role::create([
+            'name' => 'approval', 
+            'guard_name' => 'web'
+        ]);
     }
 }

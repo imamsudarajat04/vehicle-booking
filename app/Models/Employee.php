@@ -20,7 +20,7 @@ class Employee extends Model
         return $this->belongsTo(Office::class);
     }
 
-    public function bookings()
+    public function booking()
     {
         return $this->hasMany(Booking::class);
     }

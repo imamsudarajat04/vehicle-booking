@@ -9,13 +9,14 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'employee_id',
         'vehicle_id',
+        'user_id', // Add this line
         'booking_date',
         'usage_start',
         'usage_end',
-        'status',
+        'status'
     ];
 
     public function employee()
@@ -26,6 +27,11 @@ class Booking extends Model
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);
+    }
+
+    public function user() // Add this method
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function approvals()

@@ -1,14 +1,12 @@
 @extends('layouts.dashboard.DashboardLayout')
 
-@section('title', 'Vehicle')
-@section('pageTitle', 'Vehicle')
-@section('management', 'active')
-@section('toggleManagement', '')
-@section('vehicle', 'active')
+@section('title', 'Booking')
+@section('pageTitle', 'Booking')
+@section('booking', 'active')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Vehicle</li>
+    <li class="breadcrumb-item active">Booking</li>
 @endsection
 
 @push('styles')
@@ -23,11 +21,11 @@
 
       <div class="card-header">
         <div class="d-flex align-items-center">
-          <h5 class="card-title mb-0 flex-grow-1">List Vehicle</h5>
+          <h5 class="card-title mb-0 flex-grow-1">List Booking</h5>
 
-          @can('create_vehicles')
+          @can('create_bookings')
             <div class="flex-shrink-0">
-              <a class="btn btn-success add-btn" href="{!! route('vehicle.create') !!}"> <i class="ri-add-line align-bottom me-1"></i> Create new Vehicle</a>
+              <a class="btn btn-success add-btn" href="{!! route('booking.create') !!}"> <i class="ri-add-line align-bottom me-1"></i> Create new Booking</a>
             </div>
           @endcan
         </div>
@@ -35,19 +33,17 @@
 
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%" id="tableVehicle">
+          <table class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%" id="tableBookings">
             <thead>
               <tr>
                 <th style="width: 70px">No</th>
+                <th>Employee Name</th>
                 <th>Vehicle Name</th>
-                <th>Type Vehicle</th>
-                <th>Ownership</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Plate Number</th>
-                <th>Capacity</th>
-                <th>Office</th>
+                <th>Approval Name</th>
+                <th>Booking Date</th>
+                <th>Usage Start</th>
+                <th>Usage End</th>
+                <th>Status</th>
                 <th style="width: 100px">Action</th>
               </tr>
             </thead>
@@ -66,7 +62,7 @@
 
 @push('scripts')
 <script>
-    var tableUser = $('#tableVehicle').DataTable({
+    var tableUser = $('#tableBookings').DataTable({
             processing: true,
             serverSide: true,
             ordering: true,
@@ -83,40 +79,38 @@
             searchable: false,
         },
         {
-            data: 'name',
-            name: 'name',
+            data: 'employee_id',
+            name: 'employee_id',
         },
         {
-            data: 'type',
-            name: 'type',
+            data: 'vehicle_id',
+            name: 'vehicle_id',
         },
         {
-            data: 'ownership',
-            name: 'ownership',
+            data: 'user_id',
+            name: 'user_id',
         },
         {
-            data: 'brand',
-            name: 'brand',
+            data: 'booking_date',
+            name: 'booking_date',
         },
         {
-            data: 'model',
-            name: 'model',
+            data: 'usage_start',
+            name: 'usage_start',
+            orderable: false,
+            searchable: false,
         },
         {
-            data: 'year',
-            name: 'year',
+            data: 'usage_end',
+            name: 'usage_end',
+            orderable: false,
+            searchable: false,
         },
         {
-            data: 'plate_number',
-            name: 'plate_number',
-        },
-        {
-            data: 'capacity',
-            name: 'capacity',
-        },
-        {
-            data: 'office_id',
-            name: 'office_id',
+            data: 'status',
+            name: 'status',
+            orderable: false,
+            searchable: false,
         },
         {
             data: 'action',
@@ -128,7 +122,7 @@
         ],
         sDom: '<"secondBar d-flex flex-w1rap justify-content-between mb-2";f>rt<"bottom"p>',
         "fnCreatedRow": function(nRow, data) {
-            $(nRow).attr('id', 'vehicle' + data.id);
+            $(nRow).attr('id', 'booking' + data.id);
         },
     });
 
@@ -146,7 +140,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: `/management/vehicle/${id}`,
+                    url: `/booking/${id}`,
                     type: 'DELETE',
                     cache: false,
                     data: {
@@ -162,9 +156,9 @@
                                 timer: 3000
                             });
 
-                            $('#vehicle' + id).remove();
-                            $('#tableVehicle').DataTable().ajax.reload();
-                            $('#tableVehicle').DataTable().draw();
+                            $('#booking' + id).remove();
+                            $('#tableBookings').DataTable().ajax.reload();
+                            $('#tableBookings').DataTable().draw();
                         }else{
                             Swal.fire({
                                 type: 'info',
