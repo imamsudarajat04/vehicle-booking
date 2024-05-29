@@ -90,6 +90,11 @@
                                 <a class="nav-link @yield('vehicle')" href="{!! route('vehicle.index') !!}" data-key="t-vehicle"> Vehicle </a>
                             </li>
                         @endcan
+                        @can('view_usage_history')
+                            <li class="nav-item">
+                                <a class="nav-link @yield('vehicle-usage')" href="{!! route('vehicle-usage.index') !!}" data-key="t-vehicle"> Vehicle Usage </a>
+                            </li>
+                        @endcan
                     </ul>
                 </div>
             </li>
@@ -108,6 +113,15 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link @yield('approval')" href="{!! route('approval.index') !!}">
                         <i class="ri-user-follow-line"></i> <span data-key="t-approval">Approval</span>
+                    </a>
+                </li>
+            @endcan
+
+            {{-- Export Booking--}}
+            @can('view_approvals')
+                <li class="nav-item">
+                    <a class="nav-link menu-link @yield('booking-export')" href="{!! route('booking.searchexport') !!}">
+                        <i class="ri-file-list-3-line"></i> <span data-key="t-export">Export</span>
                     </a>
                 </li>
             @endcan

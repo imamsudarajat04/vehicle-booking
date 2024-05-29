@@ -21,11 +21,6 @@ class Vehicle extends Model
         'office_id',
     ];
 
-    public function fuelConsumptions()
-    {
-        return $this->hasMany(FuelConsumption::class);
-    }
-
     public function office()
     {
         return $this->belongsTo(Office::class);
@@ -34,11 +29,6 @@ class Vehicle extends Model
     public function bookings()
     {
         return $this->hasMany(Booking::class);
-    }    
-
-    public function serviceSchedule()
-    {
-        return $this->hasOne(ServiceSchedule::class);
     }
 
     public function vehicleUsage()

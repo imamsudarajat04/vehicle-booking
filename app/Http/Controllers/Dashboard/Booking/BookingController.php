@@ -8,9 +8,12 @@ use App\Models\Vehicle;
 use App\Models\Booking;
 use App\Models\Approval;
 use App\Models\Employee;
+use App\Models\VehicleUsage;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\PeriodicReportExport;
 use Yajra\DataTables\Facades\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -253,6 +256,12 @@ class BookingController extends Controller
             'status'     => 'approved',
         ]);
 
+        $vehicleUsage = VehicleUsage::create([
+            'vehicle_id'  => $booking->vehicle_id,
+            'employee_id' => $booking->employee_id,
+            'status'      => 'on-duty',
+        ]);
+
         Alert::success('Success', 'Booking has been approved');
         return redirect()->route('booking.index');
     }
@@ -278,5 +287,33 @@ class BookingController extends Controller
 
         Alert::success('Success', 'Booking has been rejected');
         return redirect()->route('booking.index');
+    }
+
+    public function searchexport()
+    {
+        $user = Auth::user();
+        $userRole = $user->roles->first()->name;
+
+        //Check if user has super-admin role or not
+        $nameRole = [
+            'super-admin' => 'Super Admin',
+            'approval' => 'Approval',
+        ][$userRole] ?? "Role Not Found";
+
+        return view('pages.export.booking', [
+            'nameRole' => $nameRole,
+        ]);
+    }
+
+    public function export(Request $request)
+    {
+        $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        dd(Booking::whereBetween('created_at', [$startDate, $endDate])->get());
     }
 }

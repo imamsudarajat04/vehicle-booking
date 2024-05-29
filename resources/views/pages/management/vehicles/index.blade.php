@@ -66,7 +66,7 @@
 
 @push('scripts')
 <script>
-    var tableUser = $('#tableVehicle').DataTable({
+    $('#tableVehicle').DataTable({
             processing: true,
             serverSide: true,
             ordering: true,
