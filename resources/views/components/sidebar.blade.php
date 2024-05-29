@@ -46,7 +46,7 @@
                 <div class="@yield('toggle', 'collapse') menu-dropdown" id="sidebarDataMaster">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-key="t-user"> User </a>
+                            <a href="{!! route('user.index') !!}" class="nav-link @yield('user')" data-key="t-user"> User </a>
                         </li>
                         <li class="nav-item">
                             <a href="{!! route('role.index') !!}" class="nav-link @yield('role')" data-key="t-Role"> Role </a>

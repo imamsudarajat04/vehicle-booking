@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DataMaster\RoleController;
+use App\Http\Controllers\Dashboard\DataMaster\UserController;
 use App\Http\Controllers\Dashboard\DataMaster\PermissionController;
 
 /*
@@ -32,5 +33,8 @@ Route::middleware(['auth'])->group(function () {
 
         //Role
         Route::resource('role', RoleController::class)->except(['show']);
+
+        //User
+        Route::resource('user', UserController::class)->except(['show']);
     });
 });
