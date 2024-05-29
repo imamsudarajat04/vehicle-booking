@@ -77,7 +77,7 @@
                         @endcan
                         @can('view_mines')
                             <li class="nav-item">
-                                <a href="#" class="nav-link @yield('mine')" data-key="t-mine"> Mine </a>
+                                <a href="{!! route('mine.index') !!}" class="nav-link @yield('mine')" data-key="t-mine"> Mine </a>
                             </li>
                         @endcan
                         @can('view_employees')

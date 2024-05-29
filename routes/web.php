@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DataMaster\RoleController;
 use App\Http\Controllers\Dashboard\DataMaster\UserController;
+use App\Http\Controllers\Dashboard\Management\MineController;
 use App\Http\Controllers\Dashboard\Management\RegionController;
 use App\Http\Controllers\Dashboard\Management\OfficeController;
 use App\Http\Controllers\Dashboard\DataMaster\PermissionController;
@@ -48,5 +49,8 @@ Route::middleware(['auth'])->group(function () {
 
         //Office
         Route::resource('office', OfficeController::class)->except(['show']);
+
+        //Mine
+        Route::resource('mine', MineController::class)->except(['show']);
     });
 });
