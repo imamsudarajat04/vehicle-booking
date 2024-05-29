@@ -87,7 +87,7 @@
                         @endcan
                         @can('view_vehicles')
                             <li class="nav-item">
-                                <a class="nav-link @yield('vehicle')" href="{!! route('dashboard') !!}" data-key="t-vehicle"> Vehicle </a>
+                                <a class="nav-link @yield('vehicle')" href="{!! route('vehicle.index') !!}" data-key="t-vehicle"> Vehicle </a>
                             </li>
                         @endcan
                     </ul>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->enum('type', ['passenger', 'cargo']);
             $table->enum('ownership', ['company_owned', 'rental']);
             $table->string('brand');
