@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard\DataMaster\UserController;
 use App\Http\Controllers\Dashboard\Management\MineController;
 use App\Http\Controllers\Dashboard\Management\RegionController;
 use App\Http\Controllers\Dashboard\Management\OfficeController;
+use App\Http\Controllers\Dashboard\Management\EmployeeController;
 use App\Http\Controllers\Dashboard\DataMaster\PermissionController;
 
 /*
@@ -52,5 +53,8 @@ Route::middleware(['auth'])->group(function () {
 
         //Mine
         Route::resource('mine', MineController::class)->except(['show']);
+
+        //Employee
+        Route::resource('employee', EmployeeController::class)->except(['show']);
     });
 });

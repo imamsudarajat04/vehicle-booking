@@ -82,7 +82,7 @@
                         @endcan
                         @can('view_employees')
                             <li class="nav-item">
-                                <a class="nav-link @yield('employee')" href="{!! route('dashboard') !!}" data-key="t-employee"> Employee </a>
+                                <a class="nav-link @yield('employee')" href="{!! route('employee.index') !!}" data-key="t-employee"> Employee </a>
                             </li>
                         @endcan
                         @can('view_vehicles')
